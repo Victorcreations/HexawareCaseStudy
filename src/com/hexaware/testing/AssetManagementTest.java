@@ -18,7 +18,7 @@ public class AssetManagementTest {
 
     @BeforeEach
     public void setup() {
-        service = new AssetManagementServiceImpl(); // or mock version
+        service = new AssetManagementServiceImpl(); 
     }
 
     @Test
@@ -41,8 +41,8 @@ public class AssetManagementTest {
 
     @Test
     public void testReserveAssetSuccessfully() {
-        int assetId = 1; // Replace with an existing asset ID
-        int employeeId = 1; // Replace with an existing employee ID
+        int assetId = 1; 
+        int employeeId = 1; 
         String reservationDate = "2024-04-21";
         String startDate = "2024-04-22";
         String endDate = "2024-04-23";
@@ -53,7 +53,7 @@ public class AssetManagementTest {
 
     @Test
     public void testAssetNotFoundException() {
-        int fakeAssetId = 9999; // Assuming this ID does not exist
+        int fakeAssetId = 9999; 
         int fakeEmployeeId = 9999;
         String reservationDate = "2024-04-21";
         String startDate = "2024-04-22";
