@@ -27,7 +27,7 @@ public class PropertyUtil {
         }
         catch(Exception e)
         {
-            System.out.println("File exists" + e.getMessage());
+            System.out.println("File can't be found " + e.getMessage());
         }
 
         return credentials;

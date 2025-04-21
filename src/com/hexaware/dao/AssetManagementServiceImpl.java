@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 import com.hexaware.util.DBConnetion;
-import com.mysql.cj.protocol.ExportControlled;
 import com.hexaware.entity.Asset;
 
 public class AssetManagementServiceImpl implements AssetManagementService  {
@@ -94,7 +93,7 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 
 		boolean deleted = false;
 
-		String query = "DELETE FROM assets WHERE assetId = ?";
+		String query = "DELETE FROM assets WHERE asset_id = ?";
 
 		try{
 			PreparedStatement pstm = connection.prepareStatement(query);
@@ -107,7 +106,7 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 				deleted = true;
 			}
 		}catch(Exception e){
-			System.out.println("Error in deleting asset");
+			System.out.println("Error in deleting asset " + e.getMessage());
 		}
 
 		return deleted;
@@ -148,7 +147,7 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 
 		boolean deAllocated = false;
 
-		String query = "DELETE FROM asset_allocation WHERE return_date = ?";
+		String query = "DELETE FROM asset_allocations WHERE return_date = ?";
 
 		try{
 			PreparedStatement pst = connection.prepareStatement(query);
@@ -161,7 +160,7 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 				deAllocated = true;
 			}
 		}catch(Exception e){
-			System.out.println("Error in deallocating asset");
+			System.out.println("Error in deallocating asset " + e.getMessage());
 		}
 
 		return deAllocated;
@@ -171,10 +170,8 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 	public boolean performMaintenance(int assetId, String maintenanceDate, String description, double cost) {
 		String query = "INSERT INTO maintenance_records (asset_id, maintenance_date, description, cost) VALUES (?, ?, ?, ?)";
 
-		try{ // assume you have a DBConnection class
+		try{ 
 			PreparedStatement pst = connection.prepareStatement(query);
-
-			// Convert the String to java.sql.Date
 
 			pst.setInt(1, assetId);
 			pst.setString(2, maintenanceDate);
@@ -200,10 +197,10 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 
 		pst.setInt(1, assetId);
 		pst.setInt(2, employeeId);
-		pst.setString(3, reservationDate); // Format: "yyyy-MM-dd"
-		pst.setString(4, startDate);       // Format: "yyyy-MM-dd"
-		pst.setString(5, endDate);         // Format: "yyyy-MM-dd"
-		pst.setString(6, "Reserved");      // Default status for new reservation
+		pst.setString(3, reservationDate); 
+		pst.setString(4, startDate);       
+		pst.setString(5, endDate);         
+		pst.setString(6, "Reserved");      
 
 		int rows = pst.executeUpdate();
 		return rows > 0;
@@ -230,8 +227,5 @@ public class AssetManagementServiceImpl implements AssetManagementService  {
 			e.printStackTrace();
 			return false;
 		}
-	}
-	
+	}	
 }
-
-

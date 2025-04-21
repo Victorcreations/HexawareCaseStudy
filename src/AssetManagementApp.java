@@ -107,6 +107,8 @@ public class AssetManagementApp {
         System.out.print("Enter employee Id : ");
         int employeeId = sc.nextInt();
 
+        sc.nextLine();
+
         System.out.print("Enter Allocation Date (yyyy-mm-dd): ");
         String allocationDate = sc.nextLine();
 
@@ -130,6 +132,8 @@ public class AssetManagementApp {
         System.out.print("Enter the employee id : ");
         int employeeId = sc.nextInt();
 
+        sc.nextLine();
+
         System.out.print("Enter the return date (yyyy-mm-dd) : ");
         String returnDate = sc.nextLine();
 
@@ -148,7 +152,7 @@ public class AssetManagementApp {
 
         System.out.print("Enter the asset ID: ");
         int assetId = sc.nextInt();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
         System.out.print("Enter the maintenance date (yyyy-mm-dd): ");
         String maintenanceDate = sc.nextLine();
@@ -168,7 +172,6 @@ public class AssetManagementApp {
             System.out.println("Failed to add maintenance record.");
         }
 
-        sc.close();
     }
 
     public static void reserveAssetInput(){
@@ -179,7 +182,7 @@ public class AssetManagementApp {
 
         System.out.print("Enter the employee ID: ");
         int employeeId = sc.nextInt();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
         System.out.print("Enter the reservation date (yyyy-mm-dd): ");
         String reservationDate = sc.nextLine();
@@ -199,7 +202,6 @@ public class AssetManagementApp {
             System.out.println("Failed to reserve the asset.");
         }
 
-        sc.close();
     }
 
     public static void withdrawReservationInput(){
@@ -217,7 +219,6 @@ public class AssetManagementApp {
             System.out.println("Failed to withdraw the reservation.");
         }
 
-        sc.close();
     }
     public static void main(String[] args) {
     
@@ -241,7 +242,8 @@ public class AssetManagementApp {
             + "\n" +
             "[7] Reserve Asset"
             + "\n" +
-            "[8] Exit" + "\n");
+            "[8] Withdraw asset" + "\n" +
+            "[9] Exit");
 
             System.out.print("Enter your choice : ");
 
@@ -265,11 +267,11 @@ public class AssetManagementApp {
                     break;
 
                 case 5:
-                    performMaintenanceInput();
+                    deAllocateInput();
                     break;
 
                 case 6:
-                    reserveAssetInput();
+                    performMaintenanceInput();
                     break;
 
                 case 7:
@@ -277,6 +279,10 @@ public class AssetManagementApp {
                     break;
             
                 case 8:
+                    withdrawReservationInput();
+                    break;
+
+                case 9:
                     exit = true;
                     break;
                     
