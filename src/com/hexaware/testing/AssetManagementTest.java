@@ -14,6 +14,7 @@ import com.hexaware.entity.Asset;
 import com.hexaware.myExceptions.AssetNotFoundException;
 
 public class AssetManagementTest {
+
     AssetManagementServiceImpl service;
 
     @BeforeEach
@@ -23,7 +24,7 @@ public class AssetManagementTest {
 
     @Test
     public void testAssetCreation() {
-        Asset asset = new Asset(0, "Printer", "Electronics", "SN12345", "2024-04-21", "Main Office", "Available", 1);
+        Asset asset = new Asset("Printer", "Electronics", "SN12345", "2024-04-21", "Main Office", "Available", 1);
         boolean result = service.addAsset(asset);
         assertTrue("Asset should be created successfully",result);
     }
